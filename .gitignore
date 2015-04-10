@@ -1,0 +1,9 @@
+bin
+build
+distribution
+release
+tmp
+.DS_Store
+*.class
+*.jar
+~
