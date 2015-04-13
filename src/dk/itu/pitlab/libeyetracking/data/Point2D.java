@@ -112,4 +112,14 @@ public class Point2D {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 127;
+        long hx = Double.doubleToLongBits(x);
+        long hy = Double.doubleToLongBits(y);
+        hash = 91 * hash + (int)(hx ^ (hx >>> 32));
+        hash = 91 * hash + (int)(hy ^ (hy >>> 32));
+        return hash;
+    }
 }

@@ -34,4 +34,12 @@ public class Conversion {
     public static PVector toPVector(com.theeyetribe.client.data.Point2D p) {
         return new PVector((float)p.x, (float)p.y);
     }
+
+    public static com.theeyetribe.client.data.Point2D toPoint2D(Point2D p) {
+        return new com.theeyetribe.client.data.Point2D(p.x, p.y);
+    }
+
+    public static com.theeyetribe.client.data.Point2D toPoint2D(PVector p) {
+        return new com.theeyetribe.client.data.Point2D(p.x, p.y);
+    }
 }
