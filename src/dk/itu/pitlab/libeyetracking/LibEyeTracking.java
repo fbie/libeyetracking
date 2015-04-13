@@ -108,6 +108,7 @@ class State {
 
     /**
      * Add listeners and initialize manager.
+     *
      * @param man The manager to initialize and to listen to.
      */
     public void init(TrackingManager man) {
@@ -140,16 +141,14 @@ public class LibEyeTracking {
 
     public final static String VERSION = "##library.prettyVersion##";
 
-    private final PApplet parent;
     private final TrackingManager man;
     private final State state;
 
     public LibEyeTracking(PApplet parent) {
-        this.parent = parent;
-        this.parent.registerMethod("dispose", this);
-        this.man = new TrackingManager(3);
-        this.state = new State();
-        this.state.init(man);
+        parent.registerMethod("dispose", this);
+        man = new TrackingManager(3);
+        state = new State();
+        state.init(man);
         System.err.println("##library.name## ##library.prettyVersion## by ##author##");
     }
 
