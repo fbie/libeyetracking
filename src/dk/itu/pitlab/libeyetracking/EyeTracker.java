@@ -137,14 +137,14 @@ class State {
  * eye tracking applications easy.
  * @author Florian Biermann, fbie@itu.dk
  */
-public class LibEyeTracking {
+public class EyeTracker {
 
     public final static String VERSION = "##library.prettyVersion##";
 
     private final TrackingManager man;
     private final State state;
 
-    public LibEyeTracking(PApplet parent) {
+    public EyeTracker(PApplet parent) {
         parent.registerMethod("dispose", this);
         man = new TrackingManager(3);
         state = new State();
