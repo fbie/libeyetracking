@@ -139,8 +139,6 @@ class State {
  */
 public class EyeTracker {
 
-    public final static String VERSION = "##library.prettyVersion##";
-
     private final TrackingManager man;
     private final State state;
 
@@ -149,16 +147,6 @@ public class EyeTracker {
         man = new TrackingManager(3);
         state = new State();
         state.init(man);
-        System.err.println("##library.name## ##library.prettyVersion## by ##author##");
-    }
-
-    /**
-     * return the version of the library.
-     *
-     * @return String
-     */
-    public static String version() {
-        return VERSION;
     }
 
     public void dispose() {
