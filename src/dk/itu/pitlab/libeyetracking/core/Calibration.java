@@ -45,8 +45,8 @@ public abstract class Calibration implements ICalibrationProcessHandler {
         sampleTime = Duration.ofMillis(500);
         calibrating = false;
 
-        setOnStart(() -> {});
-        setOnStop(() -> {});
+        setOnStart(new Runnable() { @Override public void run() {} });
+        setOnStop(new Runnable() { @Override public void run() {} });
     }
 
     public final void setSampleDuration(Duration duration) {
@@ -81,14 +81,17 @@ public abstract class Calibration implements ICalibrationProcessHandler {
         else
             next = points.remove(random.nextInt(points.size()));
 
-        showPoint(next, () -> {
-            gaze.calibrationPointStart((int) next.x, (int) next.y);
-            try {
-                Thread.sleep(sampleTime.toMillis());
-            } catch (InterruptedException e) {
-                System.err.println("Warning: Sleep was interrupted during calibration.");
+        showPoint(next, new Runnable() {
+            @Override
+            public void run() {
+                gaze.calibrationPointStart((int) next.x, (int) next.y);
+                try {
+                    Thread.sleep(sampleTime.toMillis());
+                } catch (InterruptedException e) {
+                    System.err.println("Warning: Sleep was interrupted during calibration.");
+                }
+                gaze.calibrationPointEnd();
             }
-            gaze.calibrationPointEnd();
         });
 
         return true;
@@ -156,10 +159,9 @@ public abstract class Calibration implements ICalibrationProcessHandler {
      * @return True if points were set and calibration has started, false otherwise.
      */
     public final boolean start(dk.itu.pitlab.libeyetracking.data.Point2D... points) {
-        Point2D[] np = Arrays
-                       .stream(points)
-                       .map(p -> Conversion.toPoint2D(p))
-                       .toArray(n -> new Point2D[n]);
+        Point2D[] np = new Point2D[points.length];
+        for (int i = 0; i < points.length; ++i)
+            np[i] = Conversion.toPoint2D(points[i]);
         return start(np);
     }
 
@@ -170,10 +172,9 @@ public abstract class Calibration implements ICalibrationProcessHandler {
      * @return True if points were set and calibration has started, false otherwise.
      */
     public final boolean start(PVector... points) {
-        Point2D[] np = Arrays
-                .stream(points)
-                .map(p -> Conversion.toPoint2D(p))
-                .toArray(n -> new Point2D[n]);
+        Point2D[] np = new Point2D[points.length];
+        for (int i = 0; i < points.length; ++i)
+            np[i] = Conversion.toPoint2D(points[i]);
         return start(np);
     }
 
