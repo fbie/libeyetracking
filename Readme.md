@@ -6,7 +6,7 @@ More information on these can be found at [theeyetribe.com](http://theeyetribe.c
 
 ### Getting the library
 
-You can download a build of the library [here](https://github.com/fbie/libeyetracking/blob/master/packages/libeyetracking.zip). You can also build it yourself:
+You can download a build of the library [here](https://github.com/fbie/libeyetracking/blob/master/packages/libeyetracking.zip?raw=true). You can also build it yourself:
 
 ```
 $ cd libeyetracking/resources
