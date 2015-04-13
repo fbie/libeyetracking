@@ -41,3 +41,8 @@ public void draw() {
   ellipse(c.x, c.y, 50, 50);
 }
 ```
+
+
+### Misc.
+
+This repository is based on the [Processing library template](https://github.com/processing/processing-library-template).
