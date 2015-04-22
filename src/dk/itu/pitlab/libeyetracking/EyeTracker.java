@@ -143,8 +143,12 @@ public class EyeTracker {
     private final State state;
 
     public EyeTracker(PApplet parent) {
+        this(parent, 3);
+    }
+
+    public EyeTracker(PApplet parent, int cacheFrames) {
         parent.registerMethod("dispose", this);
-        man = new TrackingManager(3);
+        man = new TrackingManager(cacheFrames);
         state = new State();
         state.init(man);
     }
