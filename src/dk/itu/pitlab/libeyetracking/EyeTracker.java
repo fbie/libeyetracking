@@ -188,14 +188,14 @@ public class EyeTracker {
     /**
      * @return The last smoothed inter-pupillary distance in pixels.
      */
-    public double ipd() {
+    public float ipd() {
         return gazeFrame().getIpd();
     }
 
     /**
      * @return The last smoothed head-roll based on eye positions in degree.
      */
-    public double roll() {
+    public float roll() {
         return gazeFrame().getRoll();
     }
 }

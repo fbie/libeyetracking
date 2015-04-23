@@ -20,9 +20,9 @@ import dk.itu.pitlab.libeyetracking.core.Utils;
 public class Frame {
 
     private final Point2D gazePoint, eyeCenter;
-    private final double ipd, roll;
+    private final float ipd, roll;
 
-    public Frame(Point2D gazePoint, Point2D eyeCenter, double idp, double roll) {
+    public Frame(Point2D gazePoint, Point2D eyeCenter, float idp, float roll) {
         this.gazePoint = gazePoint;
         this.eyeCenter = eyeCenter;
         this.ipd = idp;
@@ -46,18 +46,18 @@ public class Frame {
     /**
      * @return The inter-pupillary distance in pixels.
      */
-    public double getIpd() {
+    public float getIpd() {
         return ipd;
     }
 
     /**
      * @return The current head roll, based on the position of both eyes, in degree.
      */
-    public double getRoll() {
+    public float getRoll() {
         return roll;
     }
 
-    private static Frame zero = new Frame(Point2D.getZero(), Point2D.getZero(), 0d, 0d);
+    private static Frame zero = new Frame(Point2D.getZero(), Point2D.getZero(), 0f, 0f);
 
     /**
      * Return the empty frame. There is only one static
@@ -87,7 +87,7 @@ public class Frame {
         return new Frame(
                 Conversion.toImmutable(data.smoothedCoordinates),
                 Conversion.toImmutable(Utils.getEyesCenterPixel(data)),
-                Utils.getIpd(data),
-                Utils.getHeadRoll(data));
+                (float)Utils.getIpd(data),
+                (float)Utils.getHeadRoll(data));
     }
 }
