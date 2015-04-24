@@ -8,9 +8,7 @@ public void setup() {
   background(0);
   ellipseMode(CENTER);
   smooth();
-
-  // Use 7 frames to smoothe gaze.
-  tracker = new EyeTracker(this, 7);
+  tracker = new EyeTracker(this);
 }
 
 public void draw() {
@@ -31,6 +29,6 @@ public void draw() {
 
   // Scale circle by inter-pupillary distance.
   float ipd = tracker.ipd();
-  float ipd2 = ipd * ipd * ipd * 1000;
+  float ipd2 = ipd * ipd * ipd * 10000;
   ellipse(c.x, c.y, ipd2, ipd2);
 }
