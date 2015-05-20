@@ -10,10 +10,8 @@ import com.theeyetribe.client.IGazeListener;
 import com.theeyetribe.client.data.GazeData;
 
 /**
- * This class wraps the TET client transparently to the user.
- * Internally, it maintains the gaze manager singleton and
- * launders all gaze tracking data. Moreover, it dispatches
- * the updates to registered listeners.
+ * This class wraps the TET client transparently to the user. Internally, it maintains the gaze manager singleton and
+ * launders all gaze tracking data. Moreover, it dispatches the updates to registered listeners.
  *
  * @author Florian Biermann, fbie@itu.dk
  */

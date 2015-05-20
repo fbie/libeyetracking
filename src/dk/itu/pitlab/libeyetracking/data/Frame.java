@@ -5,15 +5,11 @@ import com.theeyetribe.client.data.GazeData;
 import dk.itu.pitlab.libeyetracking.core.Utils;
 
 /**
- * A single, immutable frame describing the
- * eye tracking state at some point in time.
+ * A single, immutable frame describing the eye tracking state at some point in time.
  *
- * It contains coordinates for the current gaze
- * point on the screen in pixels, the average
- * position of the eyes, projected onto the screen
- * in pixels, the inter-pupillary distance in pixels
- * and the head roll, based on the position of both
- * eyes, in degree.
+ * It contains coordinates for the current gaze point on the screen in pixels, the average position of the eyes,
+ * projected onto the screen in pixels, the inter-pupillary distance in pixels and the head roll, based on the position
+ * of both eyes, in degree.
  *
  * @author Florian Biermann, fbie@itu.dk
  */
@@ -60,8 +56,7 @@ public class Frame {
     private static Frame zero = new Frame(Point2D.getZero(), Point2D.getZero(), 0f, 0f);
 
     /**
-     * Return the empty frame. There is only one static
-     * instance of the empty frame.
+     * Return the empty frame. There is only one static instance of the empty frame.
      *
      * @return The empty frame.
      */
@@ -70,13 +65,9 @@ public class Frame {
     }
 
     /**
-     * Construct a Frame instance from a TET GazeData instance.
-     * <code>data</code> contains much information which we do
-     * not really require on a day-to-day basis. Moreover, it is
-     * mutable, but for making things safe, we want an immutable
-     * type instead.
-     * This static method also computes the convenience data, like
-     * IDP, roll and so on.
+     * Construct a Frame instance from a TET GazeData instance. <code>data</code> contains much information which we do
+     * not really require on a day-to-day basis. Moreover, it is mutable, but for making things safe, we want an
+     * immutable type instead. This static method also computes the convenience data, like IDP, roll and so on.
      *
      * @param data The original, mutable frame.
      * @return An immutable frame.
@@ -87,7 +78,7 @@ public class Frame {
         return new Frame(
                 Conversion.toImmutable(data.smoothedCoordinates),
                 Conversion.toImmutable(Utils.getEyesCenterPixel(data)),
-                (float)Utils.getIpd(data),
-                (float)Utils.getHeadRoll(data));
+                (float) Utils.getIpd(data),
+                (float) Utils.getHeadRoll(data));
     }
 }

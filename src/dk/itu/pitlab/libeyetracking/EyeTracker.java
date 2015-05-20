@@ -38,8 +38,8 @@ import dk.itu.pitlab.libeyetracking.core.Utils;
 import dk.itu.pitlab.libeyetracking.data.Frame;
 
 /**
- * A listener that converts GazeData instances
- * into immutable instances of Frame.
+ * A listener that converts GazeData instances into immutable instances of Frame.
+ * 
  * @author Florian Biermann, fbie@itu.dk
  */
 class FrameListener implements IGazeListener {
@@ -64,9 +64,8 @@ class FrameListener implements IGazeListener {
 }
 
 /**
- * A listener that checks for validity of
- * GazeData instances and stores the last
- * validity for later access.
+ * A listener that checks for validity of GazeData instances and stores the last validity for later access.
+ * 
  * @author Florian Biermann, fbie@itu.dk
  */
 class RawListener implements IGazeListener {
@@ -91,9 +90,8 @@ class RawListener implements IGazeListener {
 }
 
 /**
- * Encapsulates the state of the tracker by
- * providing the last frame and the last
- * state (i.e. tracking or not).
+ * Encapsulates the state of the tracker by providing the last frame and the last state (i.e. tracking or not).
+ * 
  * @author Florian Biermann, fbie@itu.dk
  */
 class State {
@@ -133,8 +131,8 @@ class State {
 }
 
 /**
- * A library for Processing that makes building
- * eye tracking applications easy.
+ * A library for Processing that makes building eye tracking applications easy.
+ * 
  * @author Florian Biermann, fbie@itu.dk
  */
 public class EyeTracker {

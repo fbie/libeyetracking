@@ -45,8 +45,16 @@ public abstract class Calibration implements ICalibrationProcessHandler {
         sampleTime = Duration.ofMillis(500);
         calibrating = false;
 
-        setOnStart(new Runnable() { @Override public void run() {} });
-        setOnStop(new Runnable() { @Override public void run() {} });
+        setOnStart(new Runnable() {
+            @Override
+            public void run() {
+            }
+        });
+        setOnStop(new Runnable() {
+            @Override
+            public void run() {
+            }
+        });
     }
 
     public final void setSampleDuration(Duration duration) {
@@ -253,8 +261,8 @@ public abstract class Calibration implements ICalibrationProcessHandler {
     }
 
     /**
-     * Implementations of {@link Calibration#showPoint(Point2D, Runnable)} should show some visuals at the given
-     * point to attract user's attention.
+     * Implementations of {@link Calibration#showPoint(Point2D, Runnable)} should show some visuals at the given point
+     * to attract user's attention.
      *
      * @param point The point to show.
      * @param callback Callback to call when point is visible to the user.

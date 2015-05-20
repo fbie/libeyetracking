@@ -50,12 +50,13 @@ public class Utils {
      * @return The center as a com.theeyetribe.client.data.Point2D
      */
     public static Point2D getEyesCenterPixel(GazeData data) {
-        return GazeUtils.getEyesCenterPixels(data, GazeManager.getInstance().getScreenResolutionWidth(),
-                GazeManager.getInstance().getScreenResolutionHeight());
+        return GazeUtils.getEyesCenterPixels(data, GazeManager.getInstance().getScreenResolutionWidth(), GazeManager
+                .getInstance().getScreenResolutionHeight());
     }
 
     /**
      * Compute the head roll for some data sample.
+     * 
      * @param data Sample to compute head roll for.
      * @return The head roll in [-90, 90].
      * @author Diako Mardanbegi, dima@itu.dk
@@ -69,8 +70,8 @@ public class Utils {
     }
 
     /**
-     * Compute the inter-pupillary distance (IPD)
-     * between the currently tracked eyes.
+     * Compute the inter-pupillary distance (IPD) between the currently tracked eyes.
+     * 
      * @param data Sample to compute IPD for.
      * @return An IPD in pixels.
      */
