@@ -44,11 +44,24 @@ public class Frame {
     private final Point2D gazePoint, eyeCenter;
     private final float ipd, roll;
 
-    public Frame(Point2D gazePoint, Point2D eyeCenter, float idp, float roll) {
+    // Allows clients to read the original data. We don't use this
+    // field for anything else internally.
+    public final GazeData data;
+
+    public Frame(Point2D gazePoint, Point2D eyeCenter, float idp, float roll, GazeData data) {
         this.gazePoint = gazePoint;
         this.eyeCenter = eyeCenter;
         this.ipd = idp;
         this.roll = roll;
+        this.data = data;
+    }
+
+    public Frame(GazeData data) {
+        this(Conversion.toImmutable(data.smoothedCoordinates),
+             Conversion.toImmutable(Utils.getEyesCenterPixel(data)),
+             (float) Utils.getIpd(data),
+             (float) Utils.getHeadRoll(data),
+             data);
     }
 
     /**
@@ -79,7 +92,7 @@ public class Frame {
         return roll;
     }
 
-    private static Frame zero = new Frame(Point2D.getZero(), Point2D.getZero(), 0f, 0f);
+    private static Frame zero = new Frame(Point2D.getZero(), Point2D.getZero(), 0f, 0f, null);
 
     /**
      * Return the empty frame. There is only one static instance of the empty frame.
@@ -104,10 +117,6 @@ public class Frame {
     public static Frame fromGazeData(GazeData data) {
         if (data == null)
             return zero;
-        return new Frame(
-                Conversion.toImmutable(data.smoothedCoordinates),
-                Conversion.toImmutable(Utils.getEyesCenterPixel(data)),
-                (float) Utils.getIpd(data),
-                (float) Utils.getHeadRoll(data));
+        return new Frame(data);
     }
 }
